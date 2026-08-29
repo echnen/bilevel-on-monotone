@@ -75,7 +75,7 @@ def Bilevel_EG(x_init, s, Model, maxit, eps_f):
 
 def Bilevel_EG_primal_dual(psi_init, sig_init, s, Model, maxit, eps_f, opt_is_available=False):
     '''
-    Algorithm in our paper.
+    Algorithm in our paper, adapted to primal-dual methods (with primal and dual variables)
     '''
 
     # storage
@@ -144,7 +144,7 @@ def Bilevel_EG_primal_dual(psi_init, sig_init, s, Model, maxit, eps_f, opt_is_av
 
 def EG_primal_dual(psi_init, sig_init, s, Model, maxit, opt_is_available=False):
     '''
-    Standard EG Algorithm.
+    Standard EG Algorithm, adapted to primal-dual methods (with primal and dual variables)
     '''
 
     # storage
@@ -249,7 +249,9 @@ def Bilevel_Popov(x_init, s, Model, maxit, eps_f):
 
 def Bilevel_Popov_primal_dual(psi_init, sig_init, s, Model, maxit, eps_f, opt_is_available=False):
     '''
-    Algorithm in our paper.
+    Optimistic extragradient method for hierarchical HVI's;
+    Algorithm 1 in Dvurechensky, Marschner, Shtern, and Staudigl; '26
+    Adapted to primal-dual methods
     '''
 
     # storage

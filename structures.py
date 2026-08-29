@@ -20,18 +20,39 @@
 #
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-"""Provide the one-dimensional total-variation proximal operator."""
+"""Compute the one-dimensional total-variation proximal operator."""
 
 import numpy as np
 
 
 def prox_tv1d(x, tau):
-
+    """Compute the proximal operator of the 1D total-variation norm.
+    
+    This implements the efficient algorithm from the literature for computing
+    the proximal operator of tau * ||.||_TV, where ||.||_TV is the 1D total-variation norm.
+    
+    Parameters
+    ----------
+    x : array_like
+        Input array.
+    tau : float
+        Regularization parameter (must be non-negative).
+    
+    Returns
+    -------
+    ndarray
+        The proximal operator applied to x.
+    
+    Raises
+    ------
+    ValueError
+        If tau is negative.
+    """
     x = np.asarray(x, dtype=float)
     n = x.size
 
     if tau < 0:
-        raise ValueError("tau must be nonnegative.")
+        raise ValueError("tau must be non-negative.")
     if n == 0 or tau == 0:
         return x.copy()
 

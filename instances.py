@@ -31,8 +31,10 @@ import structures as st
 
 class LP_Transport:
     '''
-    Inner : min of c^T x s.t. Ax = b, x \geq 0
-    Outer : |x|^2
+    Secondary Variational Problem in Optimal Transport:
+
+    Inner : min of c^T x s.t. Ax = b, x >= 0
+    Outer : 1/2 |x_0|^2
 
     '''
 
@@ -80,7 +82,7 @@ class LP_Transport:
 
     def H(self, gamma, psi):
 
-        return 0.5 * gamma[0] ** 2 # 0.5 * np.sum(gamma ** 2)
+        return 0.5 * gamma[0] ** 2
 
     def f_hat(self, gamma, psi):
 
@@ -95,8 +97,8 @@ class Toy_Example:
     """
     Toy example formulated as:
 
-    min_x TV(x)
-    s.t.  Vx = off_set
+    Inner : Vx = off_set
+    Outer : TV(x)
 
     """
 

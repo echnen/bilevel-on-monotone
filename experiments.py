@@ -38,15 +38,13 @@ def experiment_optimal_assignment_bilevel(N, maxit):
     mu_weights = np.ones(N) / N
     mu_positions = np.column_stack((
         np.cos(angles_mu),
-        np.sin(angles_mu),
-    ))
+        np.sin(angles_mu)))
     mu = (mu_weights, mu_positions)
 
     nu_weights = np.ones(N) / N
     nu_positions = np.column_stack((
         np.cos(angles_nu),
-        np.sin(angles_nu),
-    ))
+        np.sin(angles_nu)))
     nu = (nu_weights, nu_positions)
 
     a, X = mu
@@ -57,8 +55,7 @@ def experiment_optimal_assignment_bilevel(N, maxit):
 
     A = ot.create_ot_constraint_matrix(m, n)
     C = ot.create_ot_cost_matrix(X, Y)
-
-    c = C.ravel()        # row-major vectorization
+    c = C.ravel()
     b = np.concatenate((a, b))
 
     gamma_opt, psi_opt = None, None
@@ -105,9 +102,7 @@ def experiment_optimal_assignment_bilevel(N, maxit):
     print(f'Negative values: {Inner_gaps_OEGH[Inner_gaps_OEGH < -1e-8]}')
     print(f'Negative values: {Inner_gaps_BiEG[Inner_gaps_BiEG < -1e-8]}')
 
-    show.plot_ot_maps(mu, nu,
-                      [gam_fin_nb, gam_fin_BiEG, gam_fin_OEGH])
-
+    show.plot_ot_maps(mu, nu, [gam_fin_nb, gam_fin_BiEG, gam_fin_OEGH])
     show.plot_ot_comparison(delta,
                             Inner_gaps_BiEG, Inner_ress_BiEG, Outer_objs_BiEG,
                             Inner_gaps_OEGH, Inner_ress_OEGH, Outer_objs_OEGH,
@@ -143,13 +138,15 @@ def experiment_toy_example(dim=100, maxit=1e5, s=None, c=1.0, sigma_e=1.0):
             x_init = 10 * (np.random.rand(dim) -  0.5)
 
             # proposed eg method
-            inner_gaps_EG, inner_ress_EG, outer_objs_EG, _ = opt.Bilevel_EG(x_init=x_init, s=s_eg, Model=Model, maxit=maxit, eps_f=eps_f)
+            inner_gaps_EG, inner_ress_EG, outer_objs_EG, _ = \
+                opt.Bilevel_EG(x_init=x_init, s=s_eg, Model=Model, maxit=maxit, eps_f=eps_f)
             Metrics_EG[num_try, num_delta, 0, :] = inner_gaps_EG
             Metrics_EG[num_try, num_delta, 1, :] = inner_ress_EG
             Metrics_EG[num_try, num_delta, 2, :] = outer_objs_EG
 
             # optimistic method
-            inner_gaps_popov, inner_ress_popov, outer_objs_popov, _ = opt.Bilevel_Popov(x_init=x_init, s=s_popov, Model=Model, maxit=maxit, eps_f=eps_f)
+            inner_gaps_popov, inner_ress_popov, outer_objs_popov, _ = \
+                opt.Bilevel_Popov(x_init=x_init, s=s_popov, Model=Model, maxit=maxit, eps_f=eps_f)
             Metrics_Popov[num_try, num_delta, 0, :] = inner_gaps_popov
             Metrics_Popov[num_try, num_delta, 1, :] = inner_ress_popov
             Metrics_Popov[num_try, num_delta, 2, :] = outer_objs_popov
@@ -162,8 +159,6 @@ def experiment_trade_off(dim=100, maxit=1000, s=None, c=1.0, sigma_e=1.0):
 
     Model = model.Toy_Example(dim)
     Lip = Model.Lip
-    print(Model.off_set)
-    print(Model.x_opt)
 
     # step size selection
     s_eg = 0.99 / Lip
@@ -181,7 +176,8 @@ def experiment_trade_off(dim=100, maxit=1000, s=None, c=1.0, sigma_e=1.0):
         x_init = 5 * (np.random.rand(dim) -  0.5)
 
         # proposed eg method
-        inner_gaps_EG, inner_ress_EG, outer_objs_EG, _ = opt.Bilevel_EG(x_init=x_init, s=s_eg, Model=Model, maxit=maxit, eps_f=eps_f)
+        inner_gaps_EG, inner_ress_EG, outer_objs_EG, _ = \
+            opt.Bilevel_EG(x_init=x_init, s=s_eg, Model=Model, maxit=maxit, eps_f=eps_f)
         Metrics_EG[num_try, 0, :] = inner_gaps_EG
         Metrics_EG[num_try, 1, :] = inner_ress_EG
         Metrics_EG[num_try, 2, :] = outer_objs_EG

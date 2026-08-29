@@ -44,7 +44,7 @@ def create_ot_constraint_matrix(m, n):
 
     Returns
     -------
-    A : scipy.sparse.csr_matrix, shape (m+n, m*n)
+    A : scipy.sparse.csr_matrix, shape (m +n, m * n)
     """
 
     # Row sums: P 1 = a

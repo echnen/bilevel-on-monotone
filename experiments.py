@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-#
 #    Copyright (C) 2026 Radu Ioan Bot (radu.bot@univie.ac.at)
 #                       Enis Chenchene (enis.chenchene@univie.ac.at)
 #                       David Hulett (david.hulett@univie.ac.at)
@@ -22,21 +20,14 @@
 #
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-"""
-Run this file to reproduce all numerical experiments in:
-
-R. I. Bot, E. Chenchene, D. Hulett.
-Regularized extragradient method for structured bilevel optimization in continuous and discrete time.
-2026. DOI: XX.XXXXX/arXiv.XXXX.YYYYY.
-
-For any comment, please contact: enis.chenchene@gmail.com
-"""
+"""Define the optimal-assignment, toy, and regularization trade-off experiments."""
 
 import numpy as np
-import optimization as opt
-import plots as show
+
 import instances as model
+import optimization as opt
 import ottools as ot
+import plots as show
 
 
 def experiment_optimal_assignment_bilevel(N, maxit):
@@ -127,7 +118,6 @@ def experiment_optimal_assignment_bilevel(N, maxit):
     print(f'\n *********************** \n Final Bilevel Dual Solution: \n {psi_fin_BiEG}')
 
 
-
 def experiment_toy_example(dim=100, maxit=1e5, s=None, c=1.0, sigma_e=1.0):
 
     np.random.seed(0)
@@ -167,8 +157,6 @@ def experiment_toy_example(dim=100, maxit=1e5, s=None, c=1.0, sigma_e=1.0):
 
     show.plot_toy_example(Metrics_EG, Metrics_Popov, maxit, Deltas)
 
-    return
-
 
 def experiment_trade_off(dim=100, maxit=1000, s=None, c=1.0, sigma_e=1.0):
 
@@ -199,5 +187,3 @@ def experiment_trade_off(dim=100, maxit=1000, s=None, c=1.0, sigma_e=1.0):
         Metrics_EG[num_try, 2, :] = outer_objs_EG
 
     show.plot_delta_experiments(Metrics_EG, Deltas, maxit)
-
-    return

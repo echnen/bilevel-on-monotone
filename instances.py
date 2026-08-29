@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-#
 #    Copyright (C) 2026 Radu Ioan Bot (radu.bot@univie.ac.at)
 #                       Enis Chenchene (enis.chenchene@univie.ac.at)
 #                       David Hulett (david.hulett@univie.ac.at)
@@ -22,20 +20,13 @@
 #
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-"""
-Run this file to reproduce all numerical experiments in:
-
-R. I. Bot, E. Chenchene, D. Hulett.
-Regularized extragradient method for structured bilevel optimization in continuous and discrete time.
-2026. DOI: XX.XXXXX/arXiv.XXXX.YYYYY.
-
-For any comment, please contact: enis.chenchene@gmail.com
-"""
+"""Define the optimal-transport and toy bilevel problem instances."""
 
 import numpy as np
 from scipy import sparse as sp
-import structures as st
 from scipy.sparse.linalg import norm as sparse_norm
+
+import structures as st
 
 
 class LP_Transport:

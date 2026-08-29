@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-#
 #    Copyright (C) 2026 Radu Ioan Bot (radu.bot@univie.ac.at)
 #                       Enis Chenchene (enis.chenchene@univie.ac.at)
 #                       David Hulett (david.hulett@univie.ac.at)
@@ -22,15 +20,7 @@
 #
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-"""
-Run this file to reproduce all numerical experiments in:
-
-R. I. Bot, E. Chenchene, D. Hulett.
-Regularized extragradient method for structured bilevel optimization in continuous and discrete time.
-2026. DOI: XX.XXXXX/arXiv.XXXX.YYYYY.
-
-For any comment, please contact: enis.chenchene@gmail.com
-"""
+"""Provide construction and reference-solution utilities for optimal transport."""
 
 import numpy as np
 import scipy.sparse as sp
@@ -66,7 +56,6 @@ def create_ot_constraint_matrix(m, n):
     return sp.vstack((A_rows, A_cols), format="csr")
 
 
-
 def create_ot_cost_matrix(X, Y, squared=True):
     """
     Creates the OT cost matrix between two point clouds.
@@ -89,6 +78,7 @@ def optimal_dual_potential(N, alpha=0.0):
     v = (-c_min - alpha) * np.ones(N)
 
     return np.concatenate((u, v))
+
 
 def optimal_primal(N):
 

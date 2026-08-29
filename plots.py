@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-#
 #    Copyright (C) 2026 Radu Ioan Bot (radu.bot@univie.ac.at)
 #                       Enis Chenchene (enis.chenchene@univie.ac.at)
 #                       David Hulett (david.hulett@univie.ac.at)
@@ -22,23 +20,13 @@
 #
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-"""
-Run this file to reproduce all numerical experiments in:
-
-R. I. Bot, E. Chenchene, D. Hulett.
-Regularized extragradient method for structured bilevel optimization in continuous and discrete time.
-2026. DOI: XX.XXXXX/arXiv.XXXX.YYYYY.
-
-For any comment, please contact: enis.chenchene@gmail.com
-"""
+"""Create and save the figures produced by the numerical experiments."""
 
 import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib.cm import ScalarMappable
-from matplotlib.colors import Normalize
-from matplotlib.colors import LinearSegmentedColormap
 from matplotlib import rc
-
+from matplotlib.cm import ScalarMappable
+from matplotlib.colors import LinearSegmentedColormap, Normalize
 
 rc('font', **{'family': 'serif', 'serif': ['Times'], 'size': 15})
 rc('text', usetex=True)
@@ -155,11 +143,11 @@ def plot_toy_example(Metrics_EG, Metrics_Popov, maxit, Deltas):
                 rate = 1 / (iterations + 1) ** (2 * delta)
                 rate_label = rf"$\mathcal{{O}}(k^{{-{2 * delta:g}}})$"
             elif j == 1:
-                rate = 5 / (iterations + 1) ** delta # - 1 / (maxit + 1) ** delta + mean_EG[r, j][-1] + 1e-4
+                rate = 5 / (iterations + 1) ** delta
                 rate_label = rf"$\mathcal{{O}}(k^{{-{delta:g}}})$"
             else:
                 exponent = 0.5 - delta
-                rate = 1 / (iterations + 1) ** exponent # - 1 / (maxit + 1) ** exponent + mean_EG[r, j][-1] + 1e-4
+                rate = 1 / (iterations + 1) ** exponent
                 rate_label = rf"$\mathcal{{O}}(k^{{-{exponent:g}}})$"
 
             ax[r, j].loglog(iterations, rate, "--", color="k", label=rate_label)

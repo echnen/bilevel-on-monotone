@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-#
 #    Copyright (C) 2026 Radu Ioan Bot (radu.bot@univie.ac.at)
 #                       Enis Chenchene (enis.chenchene@univie.ac.at)
 #                       David Hulett (david.hulett@univie.ac.at)
@@ -22,15 +20,7 @@
 #
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-"""
-Run this file to reproduce all numerical experiments in:
-
-R. I. Bot, E. Chenchene, D. Hulett.
-Regularized extragradient method for structured bilevel optimization in continuous and discrete time.
-2026. DOI: XX.XXXXX/arXiv.XXXX.YYYYY.
-
-For any comment, please contact: enis.chenchene@gmail.com
-"""
+"""Implement the extragradient and Popov algorithms used in the experiments."""
 
 import numpy as np
 
@@ -121,13 +111,6 @@ def Bilevel_EG_primal_dual(psi_init, sig_init, s, Model, maxit, eps_f, opt_is_av
         ## producing residuals
         V_x_sig_out, V_x_psi_out = Model.V(x_sig, x_psi)
 
-        # inner residual
-        # xi_k_sig = (in_prox_y_sig - y_sig) / s
-        # xi_k_psi = (in_prox_x_psi - x_psi) / s
-        # xi_f_hat_sig = xi_k_sig - eps_k * dh_x_sig
-        # xi_f_hat_psi = xi_k_psi - eps_k * dh_x_psi
-        # inner_res = np.sum((V_x_sig_out + xi_f_hat_sig) ** 2) + np.sum((V_x_psi_out + xi_f_hat_psi) ** 2)
-        # Inner_ress.append(inner_res) # inner_res
         # inner residual
         if Model.df_hat_available:
             xi_f_hat_sig, xi_f_hat_psi = Model.df_hat(x_sig, x_psi)

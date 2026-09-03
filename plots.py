@@ -6,7 +6,7 @@
 #
 #      R. I. Bot, E. Chenchene, D. Hulett.
 #      Regularized extragradient method for structured bilevel optimization in continuous and discrete time.
-#      2026. DOI: XX.XXXXX/arXiv.XXXX.YYYYY.
+#      2026. DOI: 10.48550/arXiv.2608.29181.
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by

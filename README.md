@@ -14,7 +14,8 @@ If you find this code useful, please cite the above-mentioned paper:
   author = {Bo\c{t}, Radu Ioan and Chenchene, Enis and Hulett, David},
   title = {Regularized extragradient method for structured bilevel optimization in continuous and discrete time},
   year = {2026},
-  note = {Manuscript}
+  pages = {2608.29181},
+  journal = {ArXiv}
 }
 ```
 
